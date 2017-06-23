@@ -10,7 +10,7 @@ import javax.security.auth.login.LoginException;
 
 public class Main {
 
-    private static String TOKEN = "MzIwNTkwOTg0MTg4NjU3NjY0.DC8oKA.Go9tfCStJUEWSegScAYnSaIk3lk\n" ;
+    private static String TOKEN = "****************************************" ;
 
     public static void main(String[] Args) {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
