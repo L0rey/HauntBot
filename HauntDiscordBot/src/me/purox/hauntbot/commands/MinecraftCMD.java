@@ -12,14 +12,16 @@ public class MinecraftCMD {
 
     public static MinecraftCMD getInstance() { //geti
 
-        if(instance == null) {
+        if (instance == null) {
             instance = new MinecraftCMD();
         }
 
         return instance;
     }
 
-    public void sendMinecraftMessage (TextChannel channel, User user) {
+    public void sendMinecraftMessage(TextChannel channel, User user) {
         channel.sendMessage(user.getAsMention() + "This is our Server IP 'mc.hauntnetwork.eu' ").queue();
     }
+
+}
 
