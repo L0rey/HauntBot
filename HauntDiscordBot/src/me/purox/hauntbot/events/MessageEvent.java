@@ -1,5 +1,7 @@
 package me.purox.hauntbot.events;
 
+import me.purox.hauntbot.commands.ForumCMD;
+import me.purox.hauntbot.commands.MinecraftCMD;
 import me.purox.hauntbot.commands.TeamspeakCMD;
 import me.purox.hauntbot.commands.TwitterCMD;
 import net.dv8tion.jda.core.entities.Member;
@@ -30,6 +32,12 @@ public class MessageEvent {
                 break;
             case "twitter":
                 TwitterCMD.getInstance().sendTwitterMessage(channel, user);
+                break;
+            case "forum":
+                ForumCMD.getInstance().sendForumMessage(channel, user);
+                break;
+            case "minecraft":
+                MinecraftCMD.getInstance().sendMinecraftMessage(channel, user);
                 break;
             default:
                 break;
