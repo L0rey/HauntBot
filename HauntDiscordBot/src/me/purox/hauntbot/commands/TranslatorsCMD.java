@@ -1,6 +1,8 @@
 package me.purox.hauntbot.commands;
 
 import me.purox.hauntbot.utils.Logger;
+import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -34,8 +36,16 @@ public class TranslatorsCMD {
             return;
         }
 
-        channel.sendMessage(user.getName() + " is requesting translation help in " + language.toUpperCase() + "! Tagging eligible online translators to help!").queue();
-
-
+        String translators = "";
+        for (Member member : channel.getMembers()) {
+            for (Role role : member.getRoles()) {
+                if(role.getName().equalsIgnoreCase("Translators")) {
+                    translators += member.getAsMention() + " ";
+                }
+            }
+        }
+        if(translators != "") {
+            channel.sendMessage(user.getName() + " is requesting translation help in " + language.toUpperCase() + "! Tagging eligible online translators to help! " + translators).queue();
+        }
     }
 }
