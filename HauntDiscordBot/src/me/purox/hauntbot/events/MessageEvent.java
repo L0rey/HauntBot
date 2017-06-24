@@ -70,7 +70,9 @@ public class MessageEvent extends ListenerAdapter{
         }
 
         if(e.getChannelType() == ChannelType.PRIVATE) {
-            Logger.getLogger().log("[PM] " + user.getName() + " -> Bot " + message);
+            if(!e.getAuthor().isBot()) {
+                Logger.getLogger().log("[PM] " + user.getName() + " -> Bot " + message);
+            }
         }
     }
 }
