@@ -1,5 +1,6 @@
 package me.purox.hauntbot.commands;
 
+import me.purox.hauntbot.utils.Logger;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -20,6 +21,15 @@ public class MinecraftCMD {
     }
 
     public void sendMinecraftMessage(TextChannel channel, User user) {
+        if(channel == null) {
+            Logger.getLogger().log("Tried to send a message to a null channel");
+            return;
+        }
+        if (user == null) {
+            Logger.getLogger().log("Tried to mention a null user");
+            return;
+        }
+
         channel.sendMessage(user.getAsMention() + "This is our Server IP 'mc.hauntnetwork.eu' ").queue();
     }
 
