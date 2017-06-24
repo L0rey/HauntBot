@@ -65,7 +65,7 @@ public class UHCStaffCMD {
 
         if(allow) {
             if (uhcstaff != "") {
-                channel.sendMessage(user.getName() + " is requesting help! Tagging eligible online UHC Staffs to help! " + uhcstaff).queue();
+                channel.sendMessage(user.getName() + " is requesting help! Tagging UHC Staffs to help! " + uhcstaff).queue();
             } else {
                 channel.sendMessage(user.getAsMention() + ", no available UHCStaff could be found").queue();
             }

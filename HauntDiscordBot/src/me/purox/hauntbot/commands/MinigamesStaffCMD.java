@@ -24,7 +24,7 @@ public class MinigamesStaffCMD {
             return;
         }
 
-        if (!channel.getId().equalsIgnoreCase("319509836855246858") && !channel.getId().equalsIgnoreCase(Secrets.TEST_CHANNEL_ID)) {
+        if (!channel.getId().equalsIgnoreCase("317745370916585475") && !channel.getId().equalsIgnoreCase(Secrets.TEST_CHANNEL_ID)) {
             Logger.getLogger().log(" Tried to use a forbidden channel for !minigamestaff");
             return;
         }
@@ -58,7 +58,7 @@ public class MinigamesStaffCMD {
 
         if(allow){
             if(minigamesstaff != "") {
-                channel.sendMessage(user.getName() + " is requesting help! Tagging eligible online Minigames Staff to help! " + minigamesstaff).queue();
+                channel.sendMessage(user.getName() + " is requesting help! Tagging Minigames Staff to help! " + minigamesstaff).queue();
             } else {
                 channel.sendMessage(user.getAsMention() + ", no available Minigames Staff could be found ").queue();
             }
