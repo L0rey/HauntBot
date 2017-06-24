@@ -1,9 +1,6 @@
 package me.purox.hauntbot.events;
 
-import me.purox.hauntbot.commands.ForumCMD;
-import me.purox.hauntbot.commands.MinecraftCMD;
-import me.purox.hauntbot.commands.TeamspeakCMD;
-import me.purox.hauntbot.commands.TwitterCMD;
+import me.purox.hauntbot.commands.*;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -14,7 +11,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
  */
 public class MessageEvent {
 
-    public void onMessageREceivedEvent(MessageReceivedEvent e) {
+    public void onMessageReceivedEvent(MessageReceivedEvent e) {
         Member member = e.getMember();
         User user = e.getAuthor();
         TextChannel channel = e.getTextChannel();
@@ -23,8 +20,7 @@ public class MessageEvent {
 
         String message = e.getMessage().getContent();
 
-        String[] args = message.split("");
-
+        String[] args = message.split(" ");
 
         switch (prefix + args[0]) {
             case "ts":
@@ -36,8 +32,12 @@ public class MessageEvent {
             case "forum":
                 ForumCMD.getInstance().sendForumMessage(channel, user);
                 break;
-            case "minecraft":
+            case "ip":
                 MinecraftCMD.getInstance().sendMinecraftMessage(channel, user);
+                break;
+            case "translate":
+                String language = args[1];
+                TranslatorsCMD.getInstance().sendTranslatorMSG(channel, user, language);
                 break;
             default:
                 break;
