@@ -1,6 +1,8 @@
 package me.purox.hauntbot.events;
 
 import me.purox.hauntbot.commands.*;
+import me.purox.hauntbot.utils.Logger;
+import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -56,8 +58,19 @@ public class MessageEvent extends ListenerAdapter{
             case "!uhcseniors":
                 UHCSeniorCMD.getInstance().sendUHCSeniorMessage(channel, user);
                 break;
+            case "!minigamesseniors":
+                MinigamesSeniorCMD.getInstance().sendMinigamesSeniorMessage(channel, user);
+                break;
+            case "!minigamesstaff":
+                MinigamesStaffCMD.getInstance().sendMinigamesStaffMessage(channel, user);
+                break;
             default:
                 break;
+
+        }
+
+        if(e.getChannelType() == ChannelType.PRIVATE) {
+            Logger.getLogger().log("[PM] " + user.getName() + " -> Bot " + message);
         }
     }
 }
