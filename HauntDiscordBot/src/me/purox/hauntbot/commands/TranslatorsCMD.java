@@ -1,5 +1,6 @@
 package me.purox.hauntbot.commands;
 
+import me.purox.hauntbot.options.Secrets;
 import me.purox.hauntbot.utils.Logger;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
@@ -22,6 +23,10 @@ public class TranslatorsCMD {
     }
 
     public void sendTranslatorMSG(TextChannel channel, User user, String language) {
+        if(!channel.getId().equalsIgnoreCase("317754878112038912") && !channel.getId().equalsIgnoreCase(Secrets.TEST_CHANNEL_ID)) {
+            Logger.getLogger().log("Tried to use a forbidden channel for !translate!");
+            return;
+        }
         if(channel == null) {
             Logger.getLogger().log("Tried to send a message to a null channel");
             return;
@@ -30,7 +35,17 @@ public class TranslatorsCMD {
             Logger.getLogger().log("Tried to mention a null user");
             return;
         }
-        if(language != "german" || language != "spanish" || language != "italian" || language != "french"){
+
+        if (language == null){
+            Logger.getLogger().log("Tried to use a null language");
+            channel.sendMessage(user.getAsMention() + ", wrong usage! use !translate [language] to request translating help!").queue();
+            return;
+        }
+
+        if(!language.equalsIgnoreCase("german")
+                && !language.equalsIgnoreCase("italian")
+                && !language.equalsIgnoreCase("spanish")
+                && !language.equalsIgnoreCase("french")){
             Logger.getLogger().log("A not valid language has been detected! ("+ language +")");
             channel.sendMessage(user.getAsMention() + ", '"+language+"' is not a valid language!").queue();
             return;
@@ -46,6 +61,8 @@ public class TranslatorsCMD {
         }
         if(translators != "") {
             channel.sendMessage(user.getName() + " is requesting translation help in " + language.toUpperCase() + "! Tagging eligible online translators to help! " + translators).queue();
+        } else {
+            channel.sendMessage(user.getAsMention() + ", no available translators could be found!").queue();
         }
     }
 }
