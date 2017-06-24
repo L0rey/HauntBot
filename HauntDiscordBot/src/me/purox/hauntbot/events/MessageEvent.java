@@ -43,6 +43,9 @@ public class MessageEvent extends ListenerAdapter{
                 }
                 TranslatorsCMD.getInstance().sendTranslatorMSG(channel, user, language);
                 break;
+            case "!author":
+                authorCMD.getInstance().sendauthorMessage(channel, user);
+                break;
             default:
                 break;
         }
