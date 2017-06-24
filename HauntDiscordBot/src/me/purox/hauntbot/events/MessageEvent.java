@@ -46,6 +46,9 @@ public class MessageEvent extends ListenerAdapter{
             case "!author":
                 authorCMD.getInstance().sendauthorMessage(channel, user);
                 break;
+            case "!devs":
+                DevsCMD.getInstance().sendDevsMessage(channel, user);
+                break;
             default:
                 break;
         }
