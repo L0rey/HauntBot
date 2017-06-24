@@ -35,19 +35,35 @@ public class UHCSeniorCMD {
             return;
         }
 
-        String uhcseniors = "";
-        for (Member member : channel.getMembers()) {
-            for (Role role : member.getRoles()) {
-                if(role.getName().contains("UHC Seniors")) {
-                    uhcseniors += member.getAsMention() + "";
+        Guild guild = channel.getGuild();
+        String[] ID = new String[]{"UHC Staff", "UHC Seniors", "UHC Managers", "Admins", "Owners", "God"};
+        Member Member = guild.getMemberById(user.getId());
+
+
+        boolean allow = false;
+        for (Role r : Member.getRoles()){
+            for(String s : ID) {
+                if(r.getName().toLowerCase().equals(s.toLowerCase())) {
+                    allow = true;
                 }
             }
         }
 
-        if(uhcseniors != "") {
-            channel.sendMessage(user.getName() + " is requesting help! Tagging eligible online UHCSeniors to help!").queue();
-        } else {
-            channel.sendMessage(user.getName() + " no available UHCStaff could be found ").queue();
+        String uhcseniors = "";
+        for (Member member : channel.getMembers()) {
+            for (Role role : member.getRoles()) {
+                if(role.getName().contains("UHC Seniors")) {
+                    uhcseniors += member.getAsMention() + " ";
+                }
+            }
+        }
+
+        if(allow){
+            if(uhcseniors != "") {
+                channel.sendMessage(user.getName() + " is requesting help! Tagging eligible online UHC Seniors to help! " + uhcseniors).queue();
+            } else {
+                channel.sendMessage(user.getAsMention() + ", no available UHCStaff could be found ").queue();
+            }
         }
     }
 }

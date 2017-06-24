@@ -3,10 +3,7 @@ package me.purox.hauntbot.commands;
 import me.purox.hauntbot.events.MessageEvent;
 import me.purox.hauntbot.options.Secrets;
 import me.purox.hauntbot.utils.Logger;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.*;
 
 import javax.swing.text.html.HTMLDocument;
 import java.util.Iterator;
@@ -44,6 +41,19 @@ public class UHCStaffCMD {
             return;
         }
 
+        Guild guild = channel.getGuild();
+        String[] ID = new String[]{"UHC Seniors", "UHC Managers", "Admins", "Owners", "God"};
+        Member Member = guild.getMemberById(user.getId());
+
+        boolean allow = false;
+        for (Role r : Member.getRoles()){
+            for(String s : ID) {
+                if(r.getName().toLowerCase().equals(s.toLowerCase())) {
+                    allow = true;
+                }
+            }
+        }
+
         String uhcstaff = "";
         for (Member member : channel.getMembers()) {
             for (Role role : member.getRoles()) {
@@ -53,12 +63,13 @@ public class UHCStaffCMD {
             }
         }
 
-        if(uhcstaff != "") {
-            channel.sendMessage( user.getName() + " is requesting help! Tagging eligible online UHCStaff to help! " + uhcstaff ).queue();
-        } else {
-            channel.sendMessage(user.getName() + "no available UHCStaff could be found").queue();
+        if(allow) {
+            if (uhcstaff != "") {
+                channel.sendMessage(user.getName() + " is requesting help! Tagging eligible online UHC Staffs to help! " + uhcstaff).queue();
+            } else {
+                channel.sendMessage(user.getAsMention() + ", no available UHCStaff could be found").queue();
+            }
         }
-
     }
 
 }

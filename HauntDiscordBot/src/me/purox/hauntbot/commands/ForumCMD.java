@@ -11,7 +11,7 @@ public class ForumCMD {
 
     static ForumCMD instance;
 
-    public static ForumCMD getInstance() { //alt+ENTER //alt+ENTER //alt+ENTER //alt+ENTER //alt+ENTER
+    public static ForumCMD getInstance() {
         if(instance == null) {
             instance = new ForumCMD();
         }
