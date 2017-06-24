@@ -49,6 +49,12 @@ public class MessageEvent extends ListenerAdapter{
             case "!devs":
                 DevsCMD.getInstance().sendDevsMessage(channel, user);
                 break;
+            case "!uhcstaff":
+                UHCStaffCMD.getInstance().sendUHCStaffMessage(channel, user);
+                break;
+            case "!uhcseniors":
+                UHCSeniorCMD.getInstance().sendUHCSeniorMessage(channel, user);
+                break;
             default:
                 break;
         }
