@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:\Users\Daniel\IdeaProjects\Java\HauntBot\HauntBot\HauntBot.iml" filepath="C:\Users\Daniel\IdeaProjects\Java\HauntBot\HauntBot\HauntBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HauntDiscordBot/HauntDiscordBot.iml" filepath="$PROJECT_DIR$/HauntDiscordBot/HauntDiscordBot.iml" />
+    </modules>
+  </component>
+</project>
