@@ -1,5 +1,6 @@
 package me.purox.hauntbot;
 
+import me.purox.hauntbot.events.GuildEvents;
 import me.purox.hauntbot.events.MessageEvent;
 import me.purox.hauntbot.options.Secrets;
 import net.dv8tion.jda.core.AccountType;
@@ -21,6 +22,7 @@ public class Main {
         builder.setGame(Game.of("Being coded ..."));
 
         builder.addEventListener(new MessageEvent());
+        builder.addEventListener(new GuildEvents());
 
         try {
             builder.buildBlocking();
