@@ -1,6 +1,7 @@
 package me.purox.hauntbot.commands;
 
 import me.purox.hauntbot.utils.Logger;
+import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -20,7 +21,7 @@ public class MinecraftCMD {
         return instance;
     }
 
-    public void sendMinecraftMessage(TextChannel channel, User user) {
+    public void sendMinecraftMessage(MessageChannel channel, User user) {
         if(channel == null) {
             Logger.getLogger().log("Tried to send a message to a null channel");
             return;

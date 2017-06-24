@@ -2,10 +2,7 @@ package me.purox.hauntbot.events;
 
 import me.purox.hauntbot.commands.*;
 import me.purox.hauntbot.utils.Logger;
-import net.dv8tion.jda.core.entities.ChannelType;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -18,7 +15,8 @@ public class MessageEvent extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent e) {
         //Member member = e.getMember();
         User user = e.getAuthor();
-        TextChannel channel = e.getTextChannel();
+        MessageChannel channel = e.getChannel();
+        TextChannel textChannel = e.getTextChannel();
 
         String message = e.getMessage().getContent();
 
@@ -44,25 +42,28 @@ public class MessageEvent extends ListenerAdapter{
                 } else {
                     language = args[1];
                 }
-                TranslatorsCMD.getInstance().sendTranslatorMSG(channel, user, language);
+                TranslatorsCMD.getInstance().sendTranslatorMSG(textChannel, user, language);
                 break;
             case "!author":
                 authorCMD.getInstance().sendauthorMessage(channel, user);
                 break;
             case "!devs":
-                DevsCMD.getInstance().sendDevsMessage(channel, user);
+                DevsCMD.getInstance().sendDevsMessage(textChannel, user);
                 break;
             case "!uhcstaff":
-                UHCStaffCMD.getInstance().sendUHCStaffMessage(channel, user);
+                UHCStaffCMD.getInstance().sendUHCStaffMessage(textChannel, user);
                 break;
             case "!uhcseniors":
-                UHCSeniorCMD.getInstance().sendUHCSeniorMessage(channel, user);
+                UHCSeniorCMD.getInstance().sendUHCSeniorMessage(textChannel, user);
                 break;
             case "!minigamesseniors":
-                MinigamesSeniorCMD.getInstance().sendMinigamesSeniorMessage(channel, user);
+                MinigamesSeniorCMD.getInstance().sendMinigamesSeniorMessage(textChannel, user);
                 break;
             case "!minigamesstaff":
-                MinigamesStaffCMD.getInstance().sendMinigamesStaffMessage(channel, user);
+                MinigamesStaffCMD.getInstance().sendMinigamesStaffMessage(textChannel, user);
+                break;
+            case "!help":
+                HelpCMD.getInstance().sendHelpMessage(channel, e.getMember());
                 break;
             default:
                 break;

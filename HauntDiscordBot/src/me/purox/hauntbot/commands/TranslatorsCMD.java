@@ -2,10 +2,7 @@ package me.purox.hauntbot.commands;
 
 import me.purox.hauntbot.options.Secrets;
 import me.purox.hauntbot.utils.Logger;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.*;
 
 
 /**

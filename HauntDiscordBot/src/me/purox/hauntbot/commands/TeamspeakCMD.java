@@ -1,6 +1,7 @@
 package me.purox.hauntbot.commands;
 
 import me.purox.hauntbot.utils.Logger;
+import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -18,7 +19,7 @@ public class TeamspeakCMD {
         return instance;
     }
 
-    public void sendTeamsSpeakMessage(TextChannel channel, User user) {
+    public void sendTeamsSpeakMessage(MessageChannel channel, User user) {
 
         if(channel == null) {
             Logger.getLogger().log("Tried to send a message to a null channel");

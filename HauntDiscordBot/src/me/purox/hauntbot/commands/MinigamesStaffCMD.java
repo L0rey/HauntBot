@@ -35,7 +35,7 @@ public class MinigamesStaffCMD {
         }
 
         Guild guild = channel.getGuild();
-        String[] ID = new String[]{"Minigames Staff", "Minigames Seniors", "Minigames Managers", "Admins", "Owners", "God"};
+        String[] ID = new String[]{"Minigames Seniors", "Minigames Managers", "Admins", "Owners", "God"};
         Member Member = guild.getMemberById(user.getId());
 
         boolean allow = false;
